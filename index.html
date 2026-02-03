@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Yến Trương | Profile</title>
+    <title>Yến Trương | Health & Beauty Consultant</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #0f0c29;
+            --bg-dark: #0a1128;
             --text-main: #ffffff;
-            --text-sub: #e0c3fc;
-            --pink: #ff00cc;
-            --purple: #333399;
-            --gradient-text: linear-gradient(to right, #fff, #ff00cc);
-            --gradient-btn: linear-gradient(90deg, #ff00cc, #333399);
+            --text-sub: #b3e0ff;
+            --blue-light: #00c6ff;
+            --blue-dark: #0072ff;
+            --gradient-text: linear-gradient(to right, #fff, var(--blue-light));
+            --gradient-btn: linear-gradient(90deg, var(--blue-light), var(--blue-dark));
         }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
         }
 
         * {
@@ -39,10 +40,10 @@
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 20px;
         }
 
         .blobs {
@@ -68,7 +69,7 @@
             left: 10%;
             width: 300px;
             height: 300px;
-            background: var(--purple);
+            background: var(--blue-dark);
         }
 
         .blob-2 {
@@ -76,12 +77,17 @@
             right: 10%;
             width: 250px;
             height: 250px;
-            background: var(--pink);
+            background: var(--blue-light);
         }
 
         @keyframes floatBackground {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(30px, 50px) scale(1.1);
+            }
         }
 
         .profile-card {
@@ -91,14 +97,15 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-top: 1px solid rgba(255, 255, 255, 0.5);
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
             border-radius: 30px;
             padding: 50px;
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
+            grid-template-columns: 1.4fr 0.6fr;
             gap: 50px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            margin: 20px;
+            margin: auto;
+            position: relative;
         }
 
         .left-section {
@@ -108,13 +115,14 @@
         }
 
         .name {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 5px;
             background: var(--gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 5px 15px rgba(255, 0, 204, 0.3);
+            text-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+            line-height: 1.2;
         }
 
         .role-text {
@@ -124,6 +132,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 700;
+            margin-top: 10px;
         }
 
         .badges {
@@ -139,8 +148,9 @@
             font-size: 0.9rem;
             font-weight: 700;
             color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 198, 255, 0.1);
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            white-space: nowrap;
         }
 
         .bio {
@@ -148,10 +158,34 @@
             line-height: 1.7;
             margin-bottom: 35px;
             font-size: 1rem;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
             border-radius: 15px;
-            border-left: 3px solid var(--pink);
+            border-left: 3px solid var(--blue-light);
+        }
+
+        .bio strong {
+            color: var(--blue-light);
+        }
+
+        .bio ul {
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+
+        .bio ul li {
+            margin-bottom: 8px;
+        }
+
+        .bio-footer {
+            margin-top: 15px;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
         }
 
         .info-box {
@@ -179,18 +213,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
+            justify-content: flex-start;
+            padding-top: 20px;
         }
 
         .avatar-wrap {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             margin-bottom: 25px;
             position: relative;
+            flex-shrink: 0;
         }
 
         .avatar {
@@ -198,7 +230,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.2);
+            border: 4px solid rgba(255, 255, 255, 0.2);
             position: relative;
             z-index: 2;
         }
@@ -220,8 +252,15 @@
         }
 
         @keyframes pulseRipple {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(1.5); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
         }
 
         .social-list {
@@ -246,7 +285,6 @@
             overflow: hidden;
             transition: 0.3s;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .social-btn::before {
@@ -267,7 +305,7 @@
         }
 
         .social-btn:hover {
-            border-color: rgba(255,255,255,0.5);
+            border-color: rgba(255, 255, 255, 0.5);
             transform: translateX(5px);
         }
 
@@ -276,10 +314,10 @@
             font-size: 1.2rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             body {
                 padding: 0;
-                align-items: flex-start;
+                display: block;
             }
 
             .profile-card {
@@ -289,23 +327,22 @@
                 margin: 0;
                 width: 100%;
                 min-height: 100vh;
+                height: auto;
                 border-radius: 0;
-                border-left: none;
-                border-right: none;
-                border-top: none;
+                border: none;
                 box-shadow: none;
             }
 
             .left-section {
-                order: 1;
+                order: 2;
                 text-align: center;
-                margin-top: 20px;
             }
 
             .right-section {
-                order: 2;
+                order: 1;
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 0;
+                padding-bottom: 0;
             }
 
             .badges,
@@ -320,77 +357,91 @@
             .bio {
                 text-align: left;
             }
-
-            .avatar-wrap {
-                width: 130px;
-                height: 130px;
-            }
-
-            .info-box {
-                gap: 20px;
-                width: 100%;
-            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="blobs">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-</div>
+    <div class="blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
 
-<div class="profile-card">
-    <div class="left-section">
-        <h1 class="name">Trương Thị Liễu Yến</h1>
-        <p class="role-text">Content Creator</p>
+    <div class="profile-card">
+        <div class="left-section">
+            <h1 class="name">Trương Thị Liểu Yến</h1>
+            <p class="role-text">Health & Beauty Consultant | Amway</p>
 
-        <div class="badges">
-            <span class="badge">🎨 Design</span>
-            <span class="badge">📸 Photography</span>
-            <span class="badge">✨ Creative</span>
+            <div class="badges">
+                <span class="badge">🌿 Sức khoẻ</span>
+                <span class="badge">✨ Sắc đẹp</span>
+                <span class="badge">🧘‍♀️ Lối sống lành mạnh</span>
+            </div>
+
+            <div class="bio">
+                <p style="font-style: italic; margin-bottom: 15px; opacity: 0.9;">
+                    “Sức khoẻ là nền tảng, sắc đẹp là kết quả của việc yêu bản thân đúng cách.”
+                </p>
+
+                <p>
+                    Mình là <strong>Yến</strong> – người đồng hành cùng bạn trên hành trình nuôi dưỡng sức khoẻ và vẻ
+                    đẹp từ bên trong. Yến tin rằng khi cơ thể khoẻ mạnh, vẻ đẹp sẽ tự nhiên toả sáng. <br><br>
+                    Hiện tại, Yến tư vấn các giải pháp dinh dưỡng và chăm sóc cá nhân chính hãng từ
+                    <strong>Amway</strong>, hướng đến một lối sống lành mạnh, khoa học và bền vững.
+                </p>
+
+                <ul>
+                    <li>💚 Tư vấn cá nhân hoá theo thể trạng & mục tiêu</li>
+                    <li>✨ Chăm sóc từ gốc, đẹp tự nhiên & lâu dài</li>
+                    <li>🌿 Sản phẩm Amway chính hãng, an toàn</li>
+                    <li>🤍 Đồng hành và theo dõi xuyên suốt hành trình</li>
+                </ul>
+
+                <div class="bio-footer">
+                    Nếu bạn đang tìm kiếm một giải pháp chăm sóc sức khoẻ & sắc đẹp phù hợp với chính mình, Yến rất sẵn
+                    lòng lắng nghe và đồng hành cùng bạn.
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-item">
+                    <h4>Năm sinh</h4>
+                    <p>2005</p>
+                </div>
+                <div class="info-item">
+                    <h4>Khu vực</h4>
+                    <p>Cần Thơ</p>
+                </div>
+            </div>
         </div>
 
-        <p class="bio">
-            "Sáng tạo là hành trình tìm kiếm vẻ đẹp trong những điều bình thường nhất."<br><br>
-            Hi, mình là Yến! 🎀<br>
-            Hiện mình đang là một nhà sáng tạo nội dung trên mạng xã hội.
-        </p>
-
-        <div class="info-box">
-            <div class="info-item">
-                <h4>Năm sinh</h4>
-                <p>2005</p>
+        <div class="right-section">
+            <div class="avatar-wrap">
+                <img src="img/avt.jpg" alt="Avatar" class="avatar">
             </div>
-            <div class="info-item">
-                <h4>Khu vực</h4>
-                <p>Cần Thơ</p>
+
+            <p
+                style="margin-bottom:20px;color:var(--text-sub);font-size:0.9rem;letter-spacing:1px;text-align:center;font-weight:700;">
+                KẾT NỐI & TƯ VẤN
+            </p>
+
+            <div class="social-list">
+                <a href="https://www.facebook.com/people/Vitamin-Y%E1%BA%BFn-Tr%C6%B0%C6%A1ng/61580770445906"
+                    target="_blank" class="social-btn">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/healthy.yen_" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.tiktok.com/@vitaminyentruong?is_from_webapp=1&sender_device=pc" target="_blank"
+                    class="social-btn">
+                    <i class="fa-brands fa-tiktok"></i> TikTok
+                </a>
             </div>
         </div>
     </div>
-
-    <div class="right-section">
-        <div class="avatar-wrap">
-            <img src="img/camhoa.jpg" alt="Avatar" class="avatar">
-        </div>
-
-        <p style="margin-bottom:20px;color:var(--text-sub);font-size:0.9rem;letter-spacing:1px;text-align:center;">
-            KẾT NỐI VỚI TÔI
-        </p>
-
-        <div class="social-list">
-            <a href="https://www.facebook.com/yen.truong.1911" target="_blank" class="social-btn">
-                <i class="fa-brands fa-facebook-f"></i> Facebook
-            </a>
-            <a href="https://www.instagram.com/leew.ynie" target="_blank" class="social-btn">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@yenien999" target="_blank" class="social-btn">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-            </a>
-        </div>
-    </div>
-</div>
 
 </body>
+
 </html>
